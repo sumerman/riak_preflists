@@ -1,0 +1,6 @@
+ebin/*
+deps/*
+data*
+log/*
+.app_plt
+.edts
