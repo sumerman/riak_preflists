@@ -23,7 +23,8 @@ start(_StartType, _StartArgs) ->
         {error, _} = Err -> Err;
         {ok, _Pid} = OK ->
             [webmachine_router:add_route(R) 
-             || R <- [{["riak_preflists", "notifications"], riak_preflist_notif_wm_entry, []},
+             || R <- [{["riak_preflists", "notifications"], 
+                       riak_preflist_notif_wm_entry, []},
                       {["riak_preflists", "nodelists", "buckets", bucket, "keys", key],
                        riak_preflist_nodelist_wm_entry, []}
                      ]],
