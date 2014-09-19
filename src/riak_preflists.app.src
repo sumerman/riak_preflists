@@ -1,0 +1,18 @@
+%% ex: ft=erlang 
+{application, riak_preflists,
+ [
+  {description, ""},
+  {vsn, git},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  webmachine,
+                  riak_core,
+                  riak_kv
+                 ]},
+  {mod, { riak_preflists_app, []}},
+  {env, [
+         {port, 8091}
+        ]}
+ ]}.

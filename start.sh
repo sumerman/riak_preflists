@@ -18,6 +18,7 @@ export ERL_FULLSWEEP_AFTER=0
 erl +K true +P 1000000 -name $NODE -setcookie dev -pa ebin -pa deps/*/ebin \
 	-boot start_sasl \
    	-config ./app.config \
+	-s riak_preflists_app \
 	-riak_preflists port $ROUTING_PORT \
 	-riak_core handoff_port $HANDOFF_PORT \
 	-riak_core platform_data_dir \"$DATA_DIR\" \
