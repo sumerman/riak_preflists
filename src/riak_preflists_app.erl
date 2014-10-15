@@ -26,7 +26,9 @@ start(_StartType, _StartArgs) ->
              || R <- [{["riak_preflists", "notifications"], 
                        riak_preflist_notif_wm_entry, []},
                       {["riak_preflists", "nodelists", "buckets", bucket, "keys", key],
-                       riak_preflist_nodelist_wm_entry, []}
+                       riak_preflist_nodelist_wm_entry, []},
+                      {["riak_preflists", "ringstatus"],
+                       riak_preflist_ringstatus, []}
                      ]],
             OK
     end.
