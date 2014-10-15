@@ -7,6 +7,25 @@ As you may know Riak allows to contact any node with any request. Although clien
 
 All API endpoints piggybacks on Riak's HTTP interface, so host and port are the same.
 
+### Ring status
+
+`GET /riak_preflists/ringstatus`
+Returns a json hash table of hosts and what part of the continuum they own.
+
+For example:  
+`curl http://localhost:8881/riak_preflists/ringstatus`  
+returns something like:
+
+```
+{"0":"riak@127.0.0.1",
+ "22835963083295358096932575511191922182123945984":"riak@127.0.0.1",
+ "45671926166590716193865151022383844364247891968":"riak@127.0.0.1",
+   ...
+  "1415829711164312202009819681693899175291684651008":"riak@127.0.0.1",
+  "1438665674247607560106752257205091097473808596992":"riak@127.0.0.1"
+}
+```
+
 ### Nodelists
 
 `GET /riak_preflists/nodelists/buckets/Bucket/keys/Key`
@@ -39,7 +58,7 @@ You can join up to 9 nodes in the same way.
 
 API ports for the nodes are `8881`, `8882`, ... respectively.
 
-### Inject
+### Inject into Riak
 
 Just add 
 
@@ -48,3 +67,12 @@ Just add
 -s riak_preflists_app
 ```
 to your `vm.args` file
+
+You should see in the log something like
+
+```
+Application riak_preflists started on node 'riak@127.0.0.1'
+```
+
+When running into Riak, the REST API will be available under the same port as
+Riak's one, so `8098` by default.
